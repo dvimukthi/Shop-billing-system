@@ -24,6 +24,7 @@ public:
 
 void shopping ::menu()
 {
+m:
     int choice;
     string email;
     string password;
@@ -62,9 +63,59 @@ void shopping ::menu()
             cout << "Invalid Email/Password";
         }
         break;
+
+    case 2:
+    {
+        buyer();
     }
-case 2:
-{
-    buyer();
+    case 3:
+    {
+        exit(0);
+    }
+    default:
+    {
+        cout << "Please Select From The Given Options";
+    }
+    }
+
+    goto m;
 }
+
+void shopping::administrator()
+{
+    int choice;
+    cout << "\n\n\n\t\t\t Administrator Menu";
+    cout << "\n\t\t\t|_____1) Add the product_____|";
+    cout << "\n\t\t\t|                            |";
+    cout << "\n\t\t\t|_____2) Modify the product__|";
+    cout << "\n\t\t\t|                            |";
+    cout << "\n\t\t\t|_____3) Delete the product__|";
+    cout << "\n\t\t\t|                            |";
+    cout << "\n\t\t\t|_____4) Back to main menu___|";
+
+    cout << "\n\n\t Please Enter Your Choice ";
+    cin >> choice;
+
+    switch (choice)
+    {
+    case 1:
+        add();
+        break;
+
+    case 2:
+        edit();
+        break;
+
+    case 3:
+        rem();
+        break;
+
+    case 4:
+        menu();
+        break;
+
+    default:
+        cout << "Invalid Choice!";
+    }
+    goto m;
 }
