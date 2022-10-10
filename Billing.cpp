@@ -203,3 +203,62 @@ m:
     }
     cout << "\n\n\t\t Record Inserted!";
 }
+
+void shopping::edit()
+{
+    fstream data, data1;
+    int pkey;
+    int token = 0;
+    int c;
+    float p;
+    float d;
+    string n;
+
+    cout << "\n\t\t\t Modify TheRecord";
+    cout << "\n\t\t\t Product Code : ";
+    cin >> pkey;
+
+    data.open("database.txt", ios::in);
+    if (!data)
+    {
+        cout << "\n\nFile Doesn't Exist! ";
+    }
+    else
+    {
+        data1.open("database1.txt", ios::app | ios::out);
+        data >> pcode >> pname >> price >> dis;
+
+        while (!data.eof())
+        {
+            if (pkey == pcode)
+            {
+                cout << "\n\t\t Product New Code :";
+                cin >> c;
+                cout << "\n\t\t Name OF The Product :";
+                cin >> n;
+                cout << "\n\t\t Price :";
+                cin >> p;
+                cout << "\n\t\t Discount :";
+                cin >> d;
+                data1 << " " << c << " " << n << " " << p << " " << d << "\n";
+                cout << "\n\n\t\t Record Edited ";
+                token++;
+            }
+            else
+            {
+                data1 << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
+            }
+            data >> pcode >> pname >> price >> dis;
+        }
+        data.close();
+        data1.close();
+
+        remove("database.txt");
+        remove("database1.txt", "database.txt");
+
+        if (token == 0)
+        {
+            cout << "\n\n Record Not Found Sorry! ";
+        }
+    }
+}
