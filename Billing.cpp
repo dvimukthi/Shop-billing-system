@@ -83,6 +83,7 @@ m:
 
 void shopping::administrator()
 {
+m:
     int choice;
     cout << "\n\n\n\t\t\t Administrator Menu";
     cout << "\n\t\t\t|_____1) Add the product_____|";
@@ -113,6 +114,35 @@ void shopping::administrator()
     case 4:
         menu();
         break;
+
+    default:
+        cout << "Invalid Choice!";
+    }
+    goto m;
+}
+
+void shopping::buyer()
+{
+m:
+    int choice;
+    cout << "\t\t\t Buyer \n";
+    cout << "\t\t\t_______________\n";
+    cout << "\t\t\t               \n";
+    cout << "\t\t\t1) Buy Product \n";
+    cout << "\t\t\t               \n";
+    cout << "\t\t\t2) Go Back     \n";
+    cout << "\t\t\t Enter your choice \n";
+
+    cin >> choice;
+
+    switch (choice)
+    {
+    case 1:
+        receipt();
+        break;
+
+    case 2:
+        menu();
 
     default:
         cout << "Invalid Choice!";
