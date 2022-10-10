@@ -86,13 +86,13 @@ void shopping::administrator()
 m:
     int choice;
     cout << "\n\n\n\t\t\t Administrator Menu";
-    cout << "\n\t\t\t|_____1) Add the product_____|";
+    cout << "\n\t\t\t|_____1) Add The Product_____|";
     cout << "\n\t\t\t|                            |";
-    cout << "\n\t\t\t|_____2) Modify the product__|";
+    cout << "\n\t\t\t|_____2) Modify The Product__|";
     cout << "\n\t\t\t|                            |";
-    cout << "\n\t\t\t|_____3) Delete the product__|";
+    cout << "\n\t\t\t|_____3) Delete The Product__|";
     cout << "\n\t\t\t|                            |";
-    cout << "\n\t\t\t|_____4) Back to main menu___|";
+    cout << "\n\t\t\t|_____4) Back To Main Menu___|";
 
     cout << "\n\n\t Please Enter Your Choice ";
     cin >> choice;
@@ -131,7 +131,7 @@ m:
     cout << "\t\t\t1) Buy Product \n";
     cout << "\t\t\t               \n";
     cout << "\t\t\t2) Go Back     \n";
-    cout << "\t\t\t Enter your choice \n";
+    cout << "\t\t\t Enter Your Choice \n";
 
     cin >> choice;
 
@@ -148,4 +148,58 @@ m:
         cout << "Invalid Choice!";
     }
     goto m;
+}
+
+void shopping::add()
+{
+m:
+    fstream data;
+    int c;
+    int token = 0;
+    float p;
+    float d;
+    string n;
+
+    cout << "\n\n\t\t\t Add New Product \n";
+    cout << "\n\n\t Product code of the Product \n";
+    cin >> pcode;
+    cout << "\n\n\t Name of the Product \n";
+    cin >> pname;
+    cout << "\n\n\t Price of the Product \n";
+    cin >> price;
+    cout << "\n\n\t Discount of the Product \n";
+    cin >> dis;
+
+    data.open("database.txt", ios::in);
+
+    if (!data)
+    {
+        data.open("database.txt", ios::app | ios::out);
+        data << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
+        data.close();
+    }
+    else
+    {
+        data >> c >> n >> p >> d;
+
+        while (!data.eof())
+        {
+            if (c == pcode)
+            {
+                token++;
+            }
+            data >> c >> n >> p >> d;
+        }
+        data.close();
+
+        if (token == 1)
+            goto m;
+        else
+        {
+            data.open("database.txt", ios::app | ios::out);
+            data << " " << pcode << " " << pname << " " << price << " " << dis << "\n";
+            data.close();
+        }
+    }
+    cout << "\n\n\t\t Record Inserted!";
 }
