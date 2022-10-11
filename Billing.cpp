@@ -42,7 +42,7 @@ m:
     cout << "\t\t\t\t|                       |\n";
     cout << "\t\t\t\t|    3) Exit            |\n";
     cout << "\t\t\t\t|                       |\n";
-    cout << "\t\t\t\t Please Select!";
+    cout << "\t\t\t\t Please Select: ";
     cin >> choice;
 
     switch (choice)
@@ -327,7 +327,7 @@ void shopping::list()
     data.close();
 }
 
-void shopping::receipt()
+void shopping:: receipt()
 {
     fstream data;
     int arrc[100];
@@ -373,10 +373,10 @@ void shopping::receipt()
                 }
             }
             c++;
-            cout << "\n\n Do You Want To Buy Another Product? If Yes Then Press Y Else No";
+            cout << "\n\n Do You Want To Buy Another Product? If Yes Then Press y Else No";
             cin >> choice;
         }
-        while (choice == "y");
+        while(choice == 'y');
 
         cout << "\n\n\t\t\t____________________RECEIPT____________________\n";
         cout << "\nProduct No\t Product Name\t Product Quantity\tPrice\tAamount\tAmount With Discount\n";
