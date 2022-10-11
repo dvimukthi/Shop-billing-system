@@ -54,7 +54,7 @@ m:
         cout << "\t\t\t Password \n";
         cin >> password;
 
-        if (email = "admin@gmail.com" &&password = "admin@123")
+        if (email == "admin@gmail.com" && password == "admin@123")
         {
             administrator();
         }
@@ -315,13 +315,13 @@ void shopping::list()
     fstream data;
     data.open("database.txt", ios::in);
     cout << "\n\n|______________________________________________";
-    cout << "ProNo\t\tName\t\tPrice"\n;
+    cout << "ProNo\t\tName\t\tPrice\n";
     cout << "\n\n|______________________________________________";
-    data >> pcode >.pname >> price >> dis;
+    data >> pcode >> pname >> price >> dis;
 
     while (!data.eof())
     {
-        cout << pcode < "\t\t" << pname << "\t\t" << price << "\n";
+        cout << pcode << "\t\t" << pname << "\t\t" << price << "\n";
         data >> pcode >> pname >> price >> dis;
     }
     data.close();
@@ -358,6 +358,7 @@ void shopping::receipt()
 
         do
         {
+        m:
             cout << "\n\nEnter Product Code : ";
             cin >> arrc[c];
             cout << "\n\nEnter The Product Quantity : ";
@@ -374,7 +375,8 @@ void shopping::receipt()
             c++;
             cout << "\n\n Do You Want To Buy Another Product? If Yes Then Press Y Else No";
             cin >> choice;
-        } while (choice == "y");
+        }
+        while (choice == "y");
 
         cout << "\n\n\t\t\t____________________RECEIPT____________________\n";
         cout << "\nProduct No\t Product Name\t Product Quantity\tPrice\tAamount\tAmount With Discount\n";
@@ -401,4 +403,10 @@ void shopping::receipt()
     }
     cout << "\n\n_______________________________________________________";
     cout << "\n Total Amount : " << total;
+}
+
+int main()
+{
+    shopping s;
+    s.menu();
 }
