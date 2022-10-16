@@ -1,2 +1,2 @@
-# Supermarket Billing System
+# Shop Billing System
 C++ Project
